@@ -9,12 +9,12 @@ importers:
   .:
     dependencies:
       slicejs-web-framework:
-        specifier: 3.3.3
-        version: 3.3.3
+        specifier: 3.3.7
+        version: 3.3.7
     devDependencies:
       slicejs-cli:
-        specifier: 3.6.2
-        version: 3.6.2
+        specifier: 3.6.3
+        version: 3.6.3
 
 packages:
 
@@ -698,21 +698,21 @@ packages:
     resolution: {integrity: sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A==}
     engines: {node: '>= 0.4'}
 
-  side-channel@1.1.0:
-    resolution: {integrity: sha512-ZX99e6tRweoUXqR+VBrslhda51Nh5MTQwou5tnUDgbtyM0dBgmhEDtWGP/xbKn6hqfPRHujUNwz5fy/wbbhnpw==}
+  side-channel@1.1.1:
+    resolution: {integrity: sha512-6x6dK6zJdpTzF4sQeNYxwtvBzf6Eg4GtlesS94HOvTudUeyK2WXAaIfmDgsyslYrRBeFIlsi54AYsFGUuhmvrQ==}
     engines: {node: '>= 0.4'}
 
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  slicejs-cli@3.6.2:
-    resolution: {integrity: sha512-ahA4W1Pc5Ftw1oeuGxCxJaxtdHYBfr5446SKmsYymUWiuhiIhAel4+XZOxQul/G9OjFUofVm4J747+xjQiIVWQ==}
+  slicejs-cli@3.6.3:
+    resolution: {integrity: sha512-wY0YLAvivNVEA/I6bhwhpuyJ/5uvOsYFVEPVcBg0dbe8OYyINq54iEXhxFfMWGyRU3ou6UCVAmeyv35jy0iXMQ==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
-  slicejs-web-framework@3.3.3:
-    resolution: {integrity: sha512-YttBMuLAWMhIZ1zt8ZMrEIrDM9TqCBnp0uhNRfSgSRPA1ypA9U6NtEkhnVawlQ0SnC9pBvb4t4q1b+jwAG4Qbg==}
+  slicejs-web-framework@3.3.7:
+    resolution: {integrity: sha512-3UZYk4QN3wngy5bkgWNq/W5+BgJiAwgKe401uXazr+3rqTGdrfEZndLENrjU4W9KmsMEAnSEmJ6XRH2iTMNDHQ==}
     engines: {node: '>=20'}
 
   source-map-support@0.5.21:
@@ -1383,7 +1383,7 @@ snapshots:
 
   qs@6.15.2:
     dependencies:
-      side-channel: 1.1.0
+      side-channel: 1.1.1
 
   range-parser@1.2.1: {}
 
@@ -1464,7 +1464,7 @@ snapshots:
       object-inspect: 1.13.4
       side-channel-map: 1.0.1
 
-  side-channel@1.1.0:
+  side-channel@1.1.1:
     dependencies:
       es-errors: 1.3.0
       object-inspect: 1.13.4
@@ -1474,7 +1474,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  slicejs-cli@3.6.2:
+  slicejs-cli@3.6.3:
     dependencies:
       '@babel/parser': 7.29.7
       '@babel/traverse': 7.29.7
@@ -1487,13 +1487,13 @@ snapshots:
       html-minifier-terser: 7.2.0
       inquirer: 12.11.1
       ora: 8.2.0
-      slicejs-web-framework: 3.3.3
+      slicejs-web-framework: 3.3.7
       terser: 5.48.0
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
 
-  slicejs-web-framework@3.3.3:
+  slicejs-web-framework@3.3.7:
     dependencies:
       express: 4.22.2
     transitivePeerDependencies:

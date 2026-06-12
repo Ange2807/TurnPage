@@ -50,13 +50,6 @@ export default class FetchManager {
          options.body = JSON.stringify(data);
       }
 
-      let loading;
-      if (!slice.controller.getComponent('Loading')) {
-         loading = await slice.build('Loading', { sliceId: 'Loading' });
-      } else {
-         loading = slice.controller.getComponent('Loading');
-      }
-      loading.start();
       const timeoutId = setTimeout(() => controller.abort(), this.timeout || 10000);
 
       try {
@@ -64,7 +57,6 @@ export default class FetchManager {
 
          // Check if cache is enabled and a cached response exists
          if (this.cacheEnabled && this.lastRequest && this.lastRequest.endpoint === endpoint) {
-            loading.stop();
             return this.lastRequest.output;
          }
 
@@ -98,7 +90,6 @@ export default class FetchManager {
          }
 
          let output = await response.json();
-         loading.stop();
 
          // Cache the parsed response if cache is enabled
          if (this.cacheEnabled) {
@@ -113,7 +104,6 @@ export default class FetchManager {
          } else {
             slice.logger.logError('FetchManager', 'Request failed', error);
          }
-         loading.stop();
          throw error;
       } finally {
          clearTimeout(timeoutId);

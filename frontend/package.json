@@ -36,9 +36,9 @@
   },
   "packageManager": "pnpm@11.4.0",
   "dependencies": {
-    "slicejs-web-framework": "3.3.3"
+    "slicejs-web-framework": "3.3.7"
   },
   "devDependencies": {
-    "slicejs-cli": "3.6.2"
+    "slicejs-cli": "3.6.3"
   }
 }

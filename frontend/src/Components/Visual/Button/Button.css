@@ -1,5 +1,9 @@
 /* Encapsulated under the custom element so the button styles never leak. */
 
+slice-button {
+  display: inline-block;
+}
+
 slice-button .slice_button_container {
   padding: 10px;
 }

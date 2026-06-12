@@ -90,13 +90,19 @@ export default class Navbar extends HTMLElement {
 
    set logo(value) {
       this._logo = value;
-      // ✅ CORREGIDO: Validar que value no sea null antes de usarlo
       if (!value) return;
       
       const img = document.createElement('img');
       img.src = value.src;
       this.$logoContainer.appendChild(img);
       this.$logoContainer.href = value.path;
+
+      this.$logoContainer.addEventListener('click', (e) => {
+         e.preventDefault();
+         if (typeof slice?.router?.navigate === 'function') {
+            slice.router.navigate(value.path);
+         }
+      });
    }
 
    get items() {

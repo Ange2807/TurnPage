@@ -1,8 +1,6 @@
 export default class NotFound extends HTMLElement {
 
-   static props = {
-      // No props needed for this component
-   };
+   static props = {};
 
    constructor(props) {
       super();
@@ -11,9 +9,18 @@ export default class NotFound extends HTMLElement {
       slice.controller.setComponentProps(this, props);
    }
 
-   init() {
-      //change title of the page
+   async init() {
       document.title = '404 - Not Found';
+
+      const container = this.querySelector('.home-btn-container');
+      if (container) {
+         const homeBtn = await slice.build('Button', {
+            value: 'Go Home',
+            customColor: { background: 'var(--primary-color-contrast)', text: 'var(--primary-color)' },
+            onClick: () => slice.router.navigate('/'),
+         });
+         container.appendChild(homeBtn);
+      }
    }
 }
 
