@@ -28,15 +28,17 @@ async function iniciarApp() {
     }, { persist: true, storageKey: 'turnpage:auth' });
   }
 
-  const app = document.getElementById('app');
-
   const navbar = await slice.build('Navbar', {
-    logo: { src: '/images/logo.png', path: '/' },
-    items: [{ type: 'text', text: 'Inicio', path: '/' }],
+    logo: { src: '/images/logo.svg', path: '/' },
+    items: [{ type: 'text', text: 'Inicio', path: '/home' }],
     buttons: [],
-    position: 'static',
+    position: 'fixed',
   });
-  app.appendChild(navbar);
+
+  // Insertamos el navbar en body ANTES de #app para que el router
+  // no lo elimine al navegar entre páginas.
+  const app = document.getElementById('app');
+  document.body.insertBefore(navbar, app);
 
   await _actualizarNavbarButtons(navbar);
 

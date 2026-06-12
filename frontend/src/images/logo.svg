@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 36">
+  <!-- Icon circle -->
+  <circle cx="18" cy="18" r="17" fill="#7B2D3E"/>
+  <!-- Left page -->
+  <path d="M18 9 L7 12.5 L7 27 L18 24 Z" fill="#FDF6E3"/>
+  <!-- Right page -->
+  <path d="M18 9 L29 12.5 L29 27 L18 24 Z" fill="#EECF8E"/>
+  <!-- Spine -->
+  <rect x="17.5" y="9" width="1" height="15" fill="#C9962A"/>
+  <!-- Page-turn curl -->
+  <path d="M24.5 23.5 Q29 27 29 27 L18 24 Z" fill="#C9962A"/>
+  <!-- Text lines left page -->
+  <line x1="9" y1="17" x2="16.5" y2="16.2" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="9" y1="20" x2="16.5" y2="19.2" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- Text lines right page -->
+  <line x1="19.5" y1="16.2" x2="27" y2="17" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="19.5" y1="19.2" x2="27" y2="20" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- "TurnPage" wordmark -->
+  <text x="43" y="25"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="18"
+    font-weight="bold"
+    font-style="italic"
+    fill="#7B2D3E">TurnPage</text>
+</svg>

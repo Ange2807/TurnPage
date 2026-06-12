@@ -1,49 +1,54 @@
-/* Modern Card Component - Compact & Scrollable */
+/* Book-themed Card Component */
 slice-card, .slice-card {
   display: flex !important;
   flex-direction: column;
   box-sizing: border-box;
 
-  --card-height: 280px;
+  --card-height: 300px;
   --card-width: 100%;
   --card-max-width: 280px;
 
-  --card-bg: var(--primary-background-color);
-  --card-text: var(--font-primary-color);
-  --card-text-secondary: var(--font-secondary-color);
-  --card-border-color: var(--primary-color-shade);
-  --card-accent: var(--primary-color);
-  --card-radius: 12px;
-  --card-shadow: none;
-  --card-shadow-hover: none;
+  --card-bg: #F5E6C8;
+  --card-text: #2C1810;
+  --card-text-secondary: #6B4C35;
+  --card-border-color: #C9A87A;
+  --card-accent: #7B2D3E;
+  --card-radius: 3px;
+  --card-shadow: 3px 5px 16px rgba(44, 24, 16, 0.18);
+  --card-shadow-hover: 6px 12px 28px rgba(44, 24, 16, 0.28);
 
   position: relative;
-
   height: var(--card-height);
   width: var(--card-width);
   max-width: var(--card-max-width);
 
   background: var(--card-bg);
   border-radius: var(--card-radius);
+  /* Lomo de libro */
   border: 1px solid var(--card-border-color);
-  font-family: var(--font-family, inherit);
+  border-left: 5px solid var(--card-accent);
+  font-family: 'Lora', Georgia, serif;
   color: var(--card-text);
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
   box-shadow: var(--card-shadow);
   transform-origin: center bottom;
 }
 
+/* Variante elevated: la usamos para libros */
 slice-card.card-elevated, .slice-card.card-elevated {
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-4px);
-  border: none;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
+  border-left: 5px solid var(--card-accent);
 }
 
 slice-card.card-outlined, .slice-card.card-outlined {
-  border: 2px solid var(--card-accent);
-  background: transparent;
+  border: 1px solid var(--card-border-color);
+  border-left: 5px solid var(--card-accent);
+  background: var(--card-bg);
 }
 
 slice-card.card-minimal, .slice-card.card-minimal {
@@ -53,27 +58,26 @@ slice-card.card-minimal, .slice-card.card-minimal {
 }
 
 slice-card:hover, .slice-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--card-accent);
+  transform: translateY(-6px) rotate(0.4deg);
+  box-shadow: var(--card-shadow-hover);
+  border-left-color: var(--secondary-color, #C9962A);
 }
 
 slice-card:active, .slice-card:active {
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-2px);
   transition: all 0.1s ease;
 }
 
+/* Shimmer sutil al hover */
 slice-card .card-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(
-     135deg,
-     transparent 0%,
-     rgba(var(--primary-color-rgb), 0.05) 50%,
-     transparent 100%
-   );
+    120deg,
+    transparent 0%,
+    rgba(201, 150, 42, 0.07) 50%,
+    transparent 100%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -84,14 +88,20 @@ slice-card:hover .card-overlay, .slice-card:hover .card-overlay {
   opacity: 1;
 }
 
+/* ── Media (portada) ─────────────────────────────── */
 slice-card .card-media {
   position: relative;
-  height: 40%;
-  flex-basis: 40%;
+  height: 58%;
+  flex-basis: 58%;
   flex-grow: 0;
   flex-shrink: 0;
   width: 100%;
-  background: color-mix(in srgb, var(--primary-background-color) 98%, var(--primary-color));
+  /* Fondo tipo portada de libro cuando no hay imagen */
+  background: linear-gradient(160deg,
+    #8B3A52 0%,
+    #7B2D3E 45%,
+    #5D1E2E 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,15 +109,35 @@ slice-card .card-media {
   z-index: 2;
 }
 
+/* Patrón decorativo tipo papel sobre el fondo de placeholder */
+slice-card .card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 18px,
+    rgba(255, 255, 255, 0.04) 18px,
+    rgba(255, 255, 255, 0.04) 19px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Icono decorativo sobre el placeholder */
 slice-card .card-lucide-icon {
-  width: 56px;
-  height: 56px;
-  color: var(--card-accent);
-  transition: transform 0.4s ease;
+  width: 42px;
+  height: 42px;
+  color: rgba(253, 246, 227, 0.45);
+  transition: transform 0.4s ease, color 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .slice-card:hover .card-lucide-icon {
-  transform: scale(1.08);
+  transform: scale(1.1);
+  color: rgba(201, 150, 42, 0.7);
 }
 
 slice-card .card-media-content {
@@ -116,38 +146,46 @@ slice-card .card-media-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 2;
 }
 
 slice-card:hover .card-media-content, .slice-card:hover .card-media-content {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
+/* Imagen de portada */
 slice-card .card-media .card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: sepia(12%) contrast(1.05);
 }
 
-slice-card .card-media:empty {
-  display: none;
+slice-card:hover .card-media .card-image {
+  transform: scale(1.06);
+  filter: sepia(0%) contrast(1.08);
 }
 
+/* Badge de calificación */
 slice-card .card-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--card-accent);
-  color: var(--primary-color-contrast);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  top: 10px;
+  right: 10px;
+  background: var(--secondary-color, #C9962A);
+  color: #2C1810;
+  padding: 3px 9px;
+  border-radius: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-12px);
   transition: all 0.3s ease;
   z-index: 3;
+  box-shadow: 0 2px 6px rgba(44, 24, 16, 0.2);
 }
 
 slice-card .card-badge:not(:empty) {
@@ -155,34 +193,40 @@ slice-card .card-badge:not(:empty) {
   transform: translateY(0);
 }
 
+/* ── Contenido ───────────────────────────────────── */
 slice-card .card-content {
   position: relative;
-  height: 60%;
-  padding: 16px;
+  height: 42%;
+  padding: 12px 14px;
   background: var(--card-bg);
   z-index: 3;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 slice-card .card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
-  gap: 12px;
+  margin-bottom: 6px;
+  gap: 8px;
 }
 
 slice-card .card-title {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
   color: var(--card-text);
   line-height: 1.3;
   flex: 1;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
+  /* Clamp a 2 líneas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .slice-card:hover .card-title {
@@ -192,18 +236,17 @@ slice-card .card-title {
 slice-card .card-toggle {
   background: none;
   border: none;
-  padding: 4px;
+  padding: 3px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  border-radius: 2px;
+  transition: all 0.25s ease;
   color: var(--card-text-secondary);
   flex-shrink: 0;
 }
 
 slice-card .card-toggle:hover {
-  background: color-mix(in srgb, var(--primary-background-color) 90%, var(--primary-color));
+  background: rgba(123, 45, 62, 0.08);
   color: var(--card-accent);
-  transform: scale(1.1);
 }
 
 slice-card .card-toggle slice-icon {
@@ -216,190 +259,115 @@ slice-card .card-toggle slice-icon {
 
 slice-card .card-body {
   flex: 1;
-  margin-bottom: 8px;
-  position: relative;
-  overflow-y: auto;
-  max-height: 160px;
+  overflow: hidden;
 }
 
 slice-card .card-text {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.4;
+  font-family: 'Lora', Georgia, serif;
   color: var(--card-text-secondary);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  /* Clamp a 1 línea */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-slice-card .card-text:hover {
-  color: var(--card-text);
-}
-
+/* Scrollbar mínimo */
 slice-card .card-content::-webkit-scrollbar,
 slice-card .card-body::-webkit-scrollbar {
-  width: 4px;
+  width: 0px;
 }
 
-slice-card .card-content::-webkit-scrollbar-track,
-slice-card .card-body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-slice-card .card-content::-webkit-scrollbar-thumb,
-slice-card .card-body::-webkit-scrollbar-thumb {
-  background: var(--card-border-color);
-  border-radius: 2px;
-}
-
-slice-card .card-content::-webkit-scrollbar-thumb:hover,
-slice-card .card-body::-webkit-scrollbar-thumb:hover {
-  background: var(--card-accent);
-}
-
-slice-card .card-text-tooltip {
-  display: none;
-}
+/* Sección de detalles expandibles */
+slice-card .card-text-tooltip { display: none; }
 
 slice-card .card-details {
   max-height: 0;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
-  transform: translateY(-10px);
 }
 
 .slice-card.is-open .card-details {
   max-height: 200px;
   opacity: 1;
-  transform: translateY(0);
-  margin-top: 16px;
-  padding-top: 16px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid var(--card-border-color);
 }
 
 slice-card .card-details-content {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.82rem;
+  line-height: 1.55;
   color: var(--card-text-secondary);
+  font-family: 'Lora', Georgia, serif;
 }
 
+/* ── Acciones (botones hover) ────────────────────── */
 slice-card .card-actions {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
-  gap: 8px;
-  padding: 16px 20px;
-  background: var(--card-bg);
-  border-top: 1px solid var(--card-border-color);
+  gap: 6px;
+  padding: 8px 10px;
+  background: linear-gradient(to top, var(--card-bg) 75%, transparent);
   z-index: 4;
   transform: translateY(100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.28s ease;
 }
 
 .slice-card:hover .card-actions:not(:empty) {
   transform: translateY(0);
 }
 
-slice-card .card-actions:empty {
-  display: none;
+slice-card .card-actions:empty { display: none; }
+
+/* Buttons inside card actions — compact override */
+slice-card .card-actions slice-button {
+  flex: 1;
+  min-width: 0;
 }
 
-.slice-card.interactive {
-  user-select: none;
+slice-card .card-actions slice-button .slice_button_container {
+  padding: 0;
+  width: 100%;
 }
 
-.slice-card[style*="--custom-accent"] {
-  --card-accent: var(--custom-accent);
+slice-card .card-actions slice-button .slice_button {
+  padding: 5px 8px;
+  font-size: 0.72rem;
+  min-width: 0;
+  max-width: none;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
 }
 
-.slice-card[style*="--custom-bg"] {
-  --card-bg: var(--custom-bg);
-}
+.slice-card.interactive { user-select: none; }
 
-.slice-card[style*="--custom-text"] {
-  --card-text: var(--custom-text);
-}
-
-@media (max-width: 1024px) {
-  .slice-card {
-    --card-max-width: 260px;
-    --card-height: 260px;
-  }
-
-  slice-card .card-body {
-    max-height: 140px;
-  }
-}
-
+/* ── Responsive ──────────────────────────────────── */
 @media (max-width: 768px) {
   .slice-card {
     --card-max-width: 100%;
-    --card-height: 240px;
-    margin: 0 6px;
+    --card-height: 270px;
   }
 
-  slice-card .card-content {
-    padding: 12px;
-  }
-
-  slice-card .card-title {
-    font-size: 1rem;
-  }
-
-  slice-card .card-text {
-    font-size: 0.85rem;
-  }
-
-  slice-card .card-body {
-    max-height: 120px;
-    margin-bottom: 6px;
-  }
-
-  slice-card .card-actions {
-    padding: 8px 12px;
-    gap: 4px;
-  }
+  slice-card .card-title { font-size: 0.88rem; }
+  slice-card .card-text  { font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
-  .slice-card {
-    --card-height: 220px;
-    margin: 0 4px;
-  }
-
-  slice-card .card-content {
-    padding: 10px;
-  }
-
-  slice-card .card-title {
-    font-size: 0.95rem;
-  }
-
-  slice-card .card-text {
-    font-size: 0.8rem;
-  }
-
-  slice-card .card-body {
-    max-height: 100px;
-  }
-
-  slice-card .card-header {
-    gap: 6px;
-    margin-bottom: 6px;
-  }
+  .slice-card { --card-height: 250px; }
 }
 
-@media (prefers-color-scheme: dark) {
-  .slice-card {
-    --card-shadow: 0 8px 32px rgba(var(--primary-color-rgb), 0.3);
-    --card-shadow-hover: 0 16px 48px rgba(var(--primary-color-rgb), 0.4);
-  }
-}
-
+/* ── Accesibilidad ───────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .slice-card,
   .slice-card *,
@@ -419,15 +387,9 @@ slice-card .card-actions:empty {
 slice-card .card-toggle:focus-visible {
   outline: 2px solid var(--card-accent);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 @media (prefers-contrast: high) {
-  .slice-card {
-    border-width: 2px;
-  }
-
-  slice-card .card-toggle {
-    border: 1px solid var(--card-text);
-  }
+  .slice-card { border-width: 2px; }
+  slice-card .card-toggle { border: 1px solid var(--card-text); }
 }

@@ -45,20 +45,22 @@ export default class PerfilPage extends HTMLElement {
     const seccion = this.querySelector('#perfil-estante');
     const grid    = this.querySelector('#perfil-grid');
     seccion.style.display = 'block';
-    const etiquetas = { leyendo: '📖 Leyendo', leido: '✅ Leído', quiero_leer: '🔖 Quiero leer' };
+    const etiquetas = { leyendo: 'Leyendo', leido: 'Ya leído', quiero_leer: 'Quiero leer' };
     if (!estante.length) { grid.innerHTML = '<p class="muted">Sin libros públicos.</p>'; return; }
 
-    grid.innerHTML = estante.map((item) => `
+    grid.innerHTML = estante.map((item) => {
+      const inicial = (item.titulo_libro || '?')[0].toUpperCase();
+      return `
       <div class="perfil-libro" data-ol="${item.ol_id}">
         ${item.portada_libro
           ? `<img src="${item.portada_libro}" alt="${item.titulo_libro}" />`
-          : `<div style="height:160px;background:var(--color-surface-alt);display:flex;align-items:center;justify-content:center;font-size:2rem">📚</div>`}
+          : `<div class="perfil-portada-vacia"><span>${inicial}</span></div>`}
         <div class="perfil-libro-info">
           <div class="perfil-libro-titulo">${item.titulo_libro}</div>
           <div class="perfil-libro-estado">${etiquetas[item.estado] || item.estado}</div>
         </div>
       </div>
-    `).join('');
+    `}).join('');
 
     grid.querySelectorAll('.perfil-libro').forEach((card) => {
       card.addEventListener('click', () => slice.router.navigate(`/libro/${card.dataset.ol}`));

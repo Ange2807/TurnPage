@@ -15,7 +15,7 @@ export default class LoginPage extends HTMLElement {
       return;
     }
 
-    const api = await slice.build('ApiService', { sliceId: 'api-service' });
+    const api = await slice.build('ApiService', { sliceId: 'api-service', singleton: true });
 
     this.querySelector('#ir-registro').addEventListener('click', () =>
       slice.router.navigate('/registro')

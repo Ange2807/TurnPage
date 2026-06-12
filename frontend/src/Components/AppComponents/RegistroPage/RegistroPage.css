@@ -1,13 +1,53 @@
-/* igual que LoginPage.css */
-.auth-page { display:flex; align-items:center; justify-content:center; min-height:80vh; }
-.auth-box {
-  background: var(--color-surface, var(--secondary-background-color));
-  border: 1px solid var(--color-border, var(--primary-border-color));
-  border-radius: 16px; padding: 2rem; width: 400px; max-width: 95vw;
-  display: flex; flex-direction: column; gap: 1.25rem;
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 68px);
+  background: var(--primary-background-color, #FDF6E3);
 }
-.auth-box h1 { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--primary-color-contrast); }
-.auth-error  { color: #ef4444; font-size: .85rem; min-height: 1rem; margin: 0; }
-.auth-link   { font-size: .88rem; color: var(--secondary-color-contrast); text-align: center; margin: 0; }
-.auth-link span { color: var(--primary-color); cursor: pointer; }
+
+.auth-box {
+  background: var(--color-surface, #F5E6C8);
+  border: 1px solid var(--color-border, #C9A87A);
+  border-top: 4px solid var(--primary-color, #7B2D3E);
+  border-radius: 4px;
+  padding: 2.25rem 2rem;
+  width: 420px;
+  max-width: 95vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 4px 8px 32px rgba(44, 24, 16, 0.15);
+}
+
+.auth-box h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  margin: 0;
+  color: var(--primary-color, #7B2D3E) !important;
+}
+
+.auth-error {
+  color: var(--danger-color, #9B2335);
+  font-size: 0.85rem;
+  min-height: 1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.auth-link {
+  font-size: 0.88rem;
+  color: var(--color-text-muted, #8E7B6B);
+  text-align: center;
+  margin: 0;
+}
+
+.auth-link span {
+  color: var(--primary-color, #7B2D3E);
+  cursor: pointer;
+  font-weight: 600;
+}
+
 .auth-link span:hover { text-decoration: underline; }

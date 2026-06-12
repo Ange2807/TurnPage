@@ -1,10 +1,11 @@
 .app-shell {
   min-height: 100vh;
+  background: var(--primary-background-color, #FDF6E3);
 }
 
 .app-shell__content {
   max-width: 960px;
   margin: 0 auto;
-  /* top padding clears the fixed navbar */
   padding: 96px 24px 48px;
+  font-family: 'Lora', Georgia, serif;
 }

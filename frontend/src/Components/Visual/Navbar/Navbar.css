@@ -3,25 +3,32 @@ slice-nav-bar {
 }
 
 slice-nav-bar .slice_nav_header {
-  font-family: var(--font-family);
+  font-family: 'Lora', Georgia, serif;
   width: 100%;
   z-index: 1;
-  box-shadow: 0px 0px 10px #00000050;
-  background-color: var(--primary-color);
+  min-height: 68px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  background-color: #1C0A05;
+  border-bottom: 2px solid var(--secondary-color, #C9962A);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 0 1.5rem;
 }
+
 slice-nav-bar .direction-row-reverse {
   flex-direction: row-reverse;
 }
+
+/* Posición fija — requerida para que se vea sobre el contenido */
 slice-nav-bar.nav_bar_fixed {
-  z-index: 100;
+  z-index: 1000;
   width: 100%;
   left: 0;
   top: 0;
   position: fixed;
 }
+
 slice-nav-bar .slice_nav_bar {
   transition: transform 0.3s ease;
   width: 100%;
@@ -31,6 +38,7 @@ slice-nav-bar .slice_nav_bar {
   left: 0;
   top: 0;
 }
+
 slice-nav-bar .nav_bar_menu {
   width: 100%;
   overflow-y: hidden;
@@ -40,26 +48,39 @@ slice-nav-bar .nav_bar_menu {
   align-items: center;
   justify-content: center;
   list-style: none;
+  gap: 0.5rem;
 }
+
 slice-nav-bar .slice_nav_header .item {
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: 'Lora', Georgia, serif;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  color: var(--primary-color-contrast);
-  border-radius: var(--border-radius-slice);
+  color: #F5E6C8 !important;
+  border-radius: 2px;
+  transition: color 0.2s ease;
 }
+
+slice-nav-bar .slice_nav_header .item:hover {
+  color: var(--secondary-color, #C9962A) !important;
+}
+
+/* Subrayado animado */
 slice-nav-bar .anim-item {
   position: absolute;
   top: 100%;
   left: 50%;
   width: 0%;
-  height: 2.5px;
-  border-radius: 5px;
-  background-color: var(--primary-color-contrast);
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--secondary-color, #C9962A);
   transition: width 0.3s ease, left 0.3s ease;
 }
+
 slice-nav-bar .slice_nav_header li {
-  margin: 25px;
+  margin: 0 16px;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   position: relative;
@@ -69,33 +90,65 @@ slice-nav-bar .slice_nav_header li:hover .anim-item {
   width: 100%;
   left: 0;
 }
+
+/* Logo */
 slice-nav-bar .slice_nav_header .logo_container {
-  padding: 10px;
+  padding: 8px 12px;
+  flex-shrink: 0;
 }
+
 slice-nav-bar .logo_container img {
   pointer-events: none;
   user-select: none;
-  max-height: 50px;
-  max-width: 200px;
+  max-height: 48px;
+  max-width: 180px;
+  object-fit: contain;
+  /* Si no hay imagen, mostrar nombre de la app */
+  min-width: 40px;
+  min-height: 24px;
 }
+
+/* Botones de la navbar */
 slice-nav-bar .nav_bar_buttons {
   justify-content: flex-end;
   display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
 }
 
+/* Forzar colores de botones en la navbar */
+slice-nav-bar .nav_bar_buttons slice-button .slice_button {
+  background-color: transparent !important;
+  color: #F5E6C8 !important;
+  border-color: rgba(245, 230, 200, 0.35) !important;
+  font-size: 0.85rem;
+  padding: 7px 14px;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+slice-nav-bar .nav_bar_buttons slice-button .slice_button:hover {
+  background-color: rgba(201, 150, 42, 0.18) !important;
+  border-color: var(--secondary-color, #C9962A) !important;
+  color: var(--secondary-color, #C9962A) !important;
+}
+
+/* Mobile */
 slice-nav-bar .mobile_menu_button,
 slice-nav-bar .mobile_close_menu {
   visibility: hidden;
   position: absolute;
-  right: 0px;
-  margin-right: 25px;
+  right: 0;
+  margin-right: 20px;
 }
-slice-nav-bar .mobile_close_menu {
-  top: 25px;
-}
+
+slice-nav-bar .mobile_close_menu { top: 20px; }
+
 @media only screen and (max-width: 1020px) {
   slice-nav-bar .slice_nav_bar {
-    z-index: 1;
+    z-index: 999;
     list-style: none;
     width: 100%;
     height: 100%;
@@ -106,15 +159,23 @@ slice-nav-bar .mobile_close_menu {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: var(--primary-color);
+    background-color: #1C0A05;
     transform: translateX(100%);
   }
+
   slice-nav-bar .nav_bar_menu,
   slice-nav-bar .nav_bar_buttons {
     flex-direction: column;
   }
+
   slice-nav-bar .mobile_menu_button,
   slice-nav-bar .mobile_close_menu {
     visibility: visible;
+    color: #F5E6C8;
+  }
+
+  slice-nav-bar .mobile_menu_button svg path,
+  slice-nav-bar .mobile_close_menu svg path {
+    stroke: #F5E6C8 !important;
   }
 }

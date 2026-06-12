@@ -23,7 +23,7 @@ export default class HomePage extends HTMLElement {
       return;
     }
 
-    this.api = await slice.build('ApiService', { sliceId: 'api-service' });
+    this.api = await slice.build('ApiService', { sliceId: 'api-service', singleton: true });
     await this._cargarLibrosAlAzar();
     await this._cargarPopulares();
     await this._configurarBusqueda();
@@ -69,9 +69,7 @@ export default class HomePage extends HTMLElement {
   async _cargarPopulares() {
     const grid = this.querySelector('#home-grid-populares');
     try {
-      const res = await fetch('http://localhost:3000/api/resenas/populares');
-      if (!res.ok) throw new Error();
-      const libros = await res.json();
+      const libros = this.api.getLibrosPopulares();
       grid.innerHTML = '';
 
       if (!libros.length) {
@@ -122,7 +120,7 @@ export default class HomePage extends HTMLElement {
     });
 
     const btn = await slice.build('Button', {
-      value: '🔍 Buscar',
+      value: 'Buscar',
       onClick: buscar,
     });
     this.querySelector('#home-btn-buscar').appendChild(btn);
@@ -133,7 +131,7 @@ export default class HomePage extends HTMLElement {
       title:       libro.titulo       || libro.titulo_libro  || 'Sin título',
       text:        libro.autor        || libro.autor_libro   || '',
       image:       libro.portada      || libro.portada_libro || null,
-      variant:     'outlined',
+      variant:     'elevated',
       badge:       libro.promedio_calificacion
                      ? `★ ${libro.promedio_calificacion}`
                      : null,
@@ -141,11 +139,76 @@ export default class HomePage extends HTMLElement {
       actions: [
         {
           text: 'Ver libro',
+          variant: 'filled',
           onClick: async () => slice.router.navigate(`/libro/${libro.ol_id}`),
+        },
+        {
+          text: '+ Estante',
+          variant: 'outlined',
+          onClick: async () => this._mostrarModalEstante(libro),
         },
       ],
     });
     return card;
+  }
+
+  async _mostrarModalEstante(libro) {
+    const titulo = libro.titulo || libro.titulo_libro || 'Sin título';
+    const autor  = libro.autor  || libro.autor_libro  || '';
+    const portada = libro.portada || libro.portada_libro || null;
+
+    const modal = await slice.build('Modal', {
+      title: 'Agregar a mi estante',
+      open: false,
+      dismissable: true,
+      onClose: () => modal.remove(),
+    });
+
+    const body = document.createElement('div');
+    body.style.cssText = 'display:flex;flex-direction:column;gap:0.75rem;';
+
+    const info = document.createElement('p');
+    info.style.cssText = 'font-style:italic;color:var(--color-text-muted,#8E7B6B);margin:0 0 0.5rem;font-size:0.9rem;';
+    info.textContent = `"${titulo}"${autor ? ` — ${autor}` : ''}`;
+    body.appendChild(info);
+
+    const pregunta = document.createElement('p');
+    pregunta.style.cssText = 'font-family:\'Lora\',serif;margin:0 0 0.25rem;font-weight:600;';
+    pregunta.textContent = '¿En qué estado deseas agregarlo?';
+    body.appendChild(pregunta);
+
+    const estados = [
+      { valor: 'leyendo',     etiqueta: 'Leyendo ahora' },
+      { valor: 'leido',       etiqueta: 'Ya lo leí' },
+      { valor: 'quiero_leer', etiqueta: 'Quiero leerlo' },
+    ];
+
+    for (const estado of estados) {
+      const btn = await slice.build('Button', {
+        value: estado.etiqueta,
+        variant: 'outlined',
+        onClick: async () => {
+          modal.remove();
+          try {
+            await this.api.agregarAlEstante(
+              libro.ol_id,
+              titulo,
+              portada,
+              autor,
+              estado.valor,
+            );
+            await window.showToast('¡Libro agregado al estante!', 'success');
+          } catch (err) {
+            await window.showToast(err.message || 'Error al agregar', 'error');
+          }
+        },
+      });
+      body.appendChild(btn);
+    }
+
+    modal.appendBody(body);
+    document.body.appendChild(modal);
+    modal.open = true;
   }
 }
 

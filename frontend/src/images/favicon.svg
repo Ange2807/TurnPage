@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#7B2D3E"/>
+  <!-- Left page of open book -->
+  <path d="M16 9 L6 12.5 L6 23 L16 20 Z" fill="#FDF6E3"/>
+  <!-- Right page of open book -->
+  <path d="M16 9 L26 12.5 L26 23 L16 20 Z" fill="#EECF8E"/>
+  <!-- Spine -->
+  <rect x="15.5" y="9" width="1" height="11" fill="#C9962A"/>
+  <!-- Page-turn curl (golden) -->
+  <path d="M21.5 20 Q26 23 26 23 L16 20 Z" fill="#C9962A"/>
+  <!-- Text lines – left page -->
+  <line x1="8" y1="15" x2="14.5" y2="14.3" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="8" y1="17.6" x2="14.5" y2="16.9" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- Text lines – right page -->
+  <line x1="17.5" y1="14.3" x2="24" y2="15" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="17.5" y1="16.9" x2="24" y2="17.6" stroke="rgba(201,150,42,0.5)" stroke-width="0.9" stroke-linecap="round"/>
+</svg>

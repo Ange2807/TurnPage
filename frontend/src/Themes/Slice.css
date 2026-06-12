@@ -1,47 +1,47 @@
 :root {
   /* Tipografía */
-  --font-primary-color: #2E1A47; /* Uva oscuro, elegante para lectura */
-  --font-secondary-color: #7D3AC1; /* Uva brillante para títulos y resaltes */
+  --font-primary-color: #2C1810;   /* Tinta oscura, marrón café */
+  --font-secondary-color: #6B4C35; /* Marrón medio para texto secundario */
 
-  /** Primary - Uva intenso **/
-  --primary-color: #7D3AC1;
-  --primary-color-rgb: 125, 58, 193;
-  --primary-background-color: #F8F4FF; /* Lila muy claro como fondo principal */
-  --primary-color-contrast: #ffffff;
-  --primary-color-shade: #4E2279;
+  /** Primary - Borgoña / encuadernación de cuero **/
+  --primary-color: #7B2D3E;
+  --primary-color-rgb: 123, 45, 62;
+  --primary-background-color: #FDF6E3; /* Pergamino / marfil cálido */
+  --primary-color-contrast: #FDF6E3;
+  --primary-color-shade: #4E1A26;
 
-  /** Secondary - Lima vibrante **/
-  --secondary-color: #C6FF00; /* Amarillo lima brillante, capta la atención */
-  --secondary-color-rgb: 198, 255, 0;
-  --secondary-background-color: #F9FFE1;
-  --secondary-color-contrast: #2E2E2E;
+  /** Secondary - Dorado / cantos de páginas antiguas **/
+  --secondary-color: #C9962A;
+  --secondary-color-rgb: 201, 150, 42;
+  --secondary-background-color: #FBF0D9;
+  --secondary-color-contrast: #2C1810;
 
-  /** Tertiary - Turquesa suave **/
-  --tertiary-background-color: #D0F4F2; /* Fondo suave, fresco y moderno */
+  /** Tertiary - Papel envejecido **/
+  --tertiary-background-color: #E8D5B0;
 
-  /** Success - Verde esmeralda claro **/
-  --success-color: #00B894;
+  /** Success - Verde biblioteca **/
+  --success-color: #3D7A3A;
   --success-contrast: #ffffff;
 
-  /** Warning - Amarillo más tradicional pero suave **/
-  --warning-color: #FFD54F;
-  --warning-contrast: #3E2723;
+  /** Warning - Ámbar cálido **/
+  --warning-color: #C17B2A;
+  --warning-contrast: #ffffff;
 
-  /** Danger - Coral vibrante (sin caer en rojo tradicional) **/
-  --danger-color: #FF6F61;
+  /** Danger - Rojo oscuro **/
+  --danger-color: #9B2335;
   --danger-contrast: #ffffff;
 
-  /** Medium - Gris lavanda para texto secundario **/
-  --medium-color: #A89FB5;
-  --medium-contrast: #000000;
+  /** Medium - Cuero desgastado **/
+  --medium-color: #8E7B6B;
+  --medium-contrast: #2C1810;
 
-  /** Disabled - Gris pastel lavanda **/
-  --disabled-color: #E6E0F1;
+  /** Disabled - Pergamino desvanecido **/
+  --disabled-color: #D6C9B8;
 
-  /** Accent - Turquesa brillante para detalles elegantes **/
-  --accent-color: #00CFC1;
+  /** Accent - Verde bosque / lámparas de biblioteca **/
+  --accent-color: #4A7038;
 
-  /* Sombras */
-  --box-shadow-primary: 0px 4px 12px rgba(125, 58, 193, 0.15);
-  --box-shadow-secondary: 0px 3px 8px rgba(198, 255, 0, 0.1);
+  /* Sombras cálidas */
+  --box-shadow-primary: 0px 6px 20px rgba(123, 45, 62, 0.22);
+  --box-shadow-secondary: 0px 3px 10px rgba(201, 150, 42, 0.18);
 }

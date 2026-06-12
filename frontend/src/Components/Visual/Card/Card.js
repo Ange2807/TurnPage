@@ -229,11 +229,10 @@ export default class Card extends HTMLElement {
          try {
             const opts = {
                value: action.text || 'Action',
-               onClick: action.onClick || (() => {})
+               onClick: action.onClick || (() => {}),
             };
-            if (action.color) {
-               opts.customColor = action.color;
-            }
+            if (action.variant) opts.variant = action.variant;
+            if (action.color) opts.customColor = action.color;
             const button = await slice.build('Button', opts);
             this.$actions.appendChild(button);
          } catch (error) {
@@ -455,7 +454,9 @@ export default class Card extends HTMLElement {
    get actions() { return this._actions || []; }
    set actions(value) {
       this._actions = value;
-      if (this.$actions) {
+      // Guard: durante la construcción init() llama setupActions() una sola vez.
+      // Sin este guard el setter async + init() async producen botones duplicados.
+      if (this.$actions && this._initialized) {
          this.setupActions();
       }
    }
@@ -485,8 +486,7 @@ export default class Card extends HTMLElement {
    }
 
    updateActions(newActions) {
-      this.actions = newActions;
-      this.setupActions();
+      this.actions = newActions; // setter llama setupActions() cuando _initialized es true
    }
 
    enable() {

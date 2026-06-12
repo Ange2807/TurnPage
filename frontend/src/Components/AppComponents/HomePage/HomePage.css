@@ -1,0 +1,119 @@
+/* ─────────────────────────────────────────────────────
+   HomePage — cargado automáticamente por Slice.js
+───────────────────────────────────────────────────── */
+
+.home-page {
+  padding: 2.5rem 2rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Hero ──────────────────────────────────────────── */
+.home-hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  position: relative;
+  border-bottom: 1px solid var(--color-border, #C9A87A);
+  margin-bottom: 0.5rem;
+}
+
+.home-hero__eyebrow {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary-color, #C9962A);
+  margin: 0 0 0.75rem;
+}
+
+.home-hero h1 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  font-style: italic;
+  margin: 0 0 0.75rem;
+  color: var(--primary-color, #7B2D3E) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Ornamento decorativo bajo el título */
+.home-hero h1::after {
+  content: '— ✦ —';
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--secondary-color, #C9962A);
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.home-hero__sub {
+  font-family: 'Lora', Georgia, serif;
+  color: var(--color-text-muted, #8E7B6B);
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.home-search-row {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 560px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+#home-input-buscar { flex: 1; }
+
+/* ── Section headers ───────────────────────────────── */
+.home-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 1.25rem;
+}
+
+.home-section-header h2 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--primary-color, #7B2D3E) !important;
+  white-space: nowrap;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.home-section-line {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-border, #C9A87A), transparent);
+}
+
+/* ── Grid de libros ─────────────────────────────────── */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.home-grid > slice-card,
+.home-grid > .slice-card {
+  --card-height: 300px;
+  --card-max-width: 100%;
+  height: 300px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.muted {
+  color: var(--color-text-muted, #8E7B6B);
+  font-style: italic;
+}

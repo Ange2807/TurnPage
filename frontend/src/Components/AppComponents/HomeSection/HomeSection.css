@@ -1,20 +1,30 @@
 .home {
   text-align: center;
-  padding: 32px 0;
+  padding: 40px 0;
 }
 
 .home__title {
-  font-size: 2rem;
-  margin-bottom: 12px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-style: italic;
+  margin-bottom: 14px;
+  color: var(--primary-color, #7B2D3E);
 }
 
 .home__lead {
-  color: var(--font-secondary-color);
+  font-family: 'Lora', Georgia, serif;
+  color: var(--font-secondary-color, #6B4C35);
   max-width: 60ch;
   margin: 0 auto 24px;
-  line-height: 1.6;
+  line-height: 1.75;
+  font-style: italic;
 }
 
 .home__lead code {
-  color: var(--font-primary-color);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: normal;
+  color: var(--primary-color, #7B2D3E);
+  background: var(--color-surface, #F5E6C8);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
 }
