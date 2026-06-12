@@ -1,11 +1,125 @@
-/* App-level base styles. Component styles live in each component's own .css. */
-* {
-  box-sizing: border-box;
-  font-family: var(--font-family, system-ui, -apple-system, Segoe UI, Roboto, sans-serif);
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
-  background: var(--primary-background-color);
-  color: var(--font-primary-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  background: #0f0f13;
+  color: #f1f1f1;
 }
+
+#router-outlet {
+  min-height: calc(100vh - 64px);
+}
+
+/* Forzar colores visibles sobre el tema de Slice */
+h1, h2, h3 { color: #f1f1f1 !important; }
+p, span, div { color: #f1f1f1; }
+.muted { color: #888 !important; }
+
+/* Navbar */
+.slice_nav_header {
+  background: #1a1a2e !important;
+  border-bottom: 1px solid #2a2a3e !important;
+  padding: 0 2rem;
+}
+
+/* Botón buscar — que no ocupe todo el ancho */
+#home-btn-buscar {
+  width: auto;
+  flex-shrink: 0;
+}
+
+#home-btn-buscar .slice_button_container,
+#home-btn-buscar .slice_button {
+  width: auto !important;
+}
+
+/* Search row */
+.home-search-row {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+#home-input-buscar {
+  flex: 1;
+}
+
+/* Grid de libros */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Cards */
+.slice-card {
+  background: #1a1a2e !important;
+  border: 1px solid #2a2a3e !important;
+  color: #f1f1f1 !important;
+}
+
+.card-title {
+  color: #f1f1f1 !important;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #aaa !important;
+  font-size: 0.85rem;
+}
+
+/* Auth pages */
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.auth-box {
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 400px;
+  max-width: 95vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.auth-box h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #f1f1f1 !important;
+}
+
+.auth-error {
+  color: #ef4444;
+  font-size: 0.85rem;
+  min-height: 1rem;
+}
+
+.auth-link {
+  font-size: 0.88rem;
+  color: #888;
+  text-align: center;
+}
+
+.auth-link span {
+  color: #818cf8;
+  cursor: pointer;
+}
+
+slice-nav-bar {
+  display: block;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.auth-link span:hover { text-decoration: underline; }

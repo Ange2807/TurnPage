@@ -1,17 +1,34 @@
 const components = {
-  "AboutSection": "AppComponents",
-  "AppShell": "AppComponents",
-  "Button": "Visual",
-  "FetchManager": "Service",
-  "HomeSection": "AppComponents",
-  "IndexedDbManager": "Service",
-  "Link": "Visual",
-  "Loading": "Visual",
+  // ── Visual (de Slice.js) ────────────────────────────────
+  "Button":              "Visual",
+  "Card":                "Visual",
+  "Input":               "Visual",
+  "Link":                "Visual",
+  "Loading":             "Visual",
+  "Modal":               "Visual",
+  "MultiRoute":          "Visual",
+  "Navbar":              "Visual",
+  "NotFound":            "Visual",
+  "Route":               "Visual",
+  "Textarea":            "Visual",
+  "Toast":               "Visual",
+
+  // ── Service (de Slice.js) ───────────────────────────────
+  "FetchManager":        "Service",
+  "IndexedDbManager":    "Service",
   "LocalStorageManager": "Service",
-  "MultiRoute": "Visual",
-  "Navbar": "Visual",
-  "NotFound": "Visual",
-  "Route": "Visual"
+
+  // ── Service (tuyo) ──────────────────────────────────────
+  "ApiService":          "Service",
+
+  // ── AppComponents (tuyos) ───────────────────────────────
+  "HomePage":            "AppComponents",
+  "LibroPage":           "AppComponents",
+  "PerfilPage":          "AppComponents",
+  "MiEstantePage":       "AppComponents",
+  "LoginPage":           "AppComponents",
+  "RegistroPage":        "AppComponents",
+  "ResenaModal":         "AppComponents",
 };
 
 export default components;

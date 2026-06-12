@@ -1,10 +1,12 @@
-// App Shell + MultiRoute starter.
-// Every section URL renders AppShell, which swaps the content area via a MultiRoute.
-// Dynamic params use ${name} (NOT :name). Keep the 404 route last.
 const routes = [
-   { path: '/',      component: 'AppShell', metadata: { title: 'Home' } },
-   { path: '/about', component: 'AppShell', metadata: { title: 'About' } },
-   { path: '/404',   component: 'NotFound', metadata: { title: 'Not Found' } }
+  { path: '/',                 component: 'LoginPage'     },
+  { path: '/home',             component: 'HomePage'      },
+  { path: '/libro/:ol_id',     component: 'LibroPage'     },
+  { path: '/perfil/:username', component: 'PerfilPage'    },
+  { path: '/mi-estante',       component: 'MiEstantePage' },
+  { path: '/login',            component: 'LoginPage'     },
+  { path: '/registro',         component: 'RegistroPage'  },
+  { path: '/404',              component: 'NotFound'      },
 ];
 
 export default routes;

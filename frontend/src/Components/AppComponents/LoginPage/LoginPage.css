@@ -1,0 +1,12 @@
+.auth-page { display:flex; align-items:center; justify-content:center; min-height:80vh; }
+.auth-box {
+  background: var(--color-surface, var(--secondary-background-color));
+  border: 1px solid var(--color-border, var(--primary-border-color));
+  border-radius: 16px; padding: 2rem; width: 400px; max-width: 95vw;
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.auth-box h1 { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--primary-color-contrast); }
+.auth-error  { color: #ef4444; font-size: .85rem; min-height: 1rem; margin: 0; }
+.auth-link   { font-size: .88rem; color: var(--secondary-color-contrast); text-align: center; margin: 0; }
+.auth-link span { color: var(--primary-color); cursor: pointer; }
+.auth-link span:hover { text-decoration: underline; }

@@ -1,0 +1,302 @@
+/**
+ * Slice.js Bundle Configuration
+ * Generated: 2026-06-12T10:46:24.575Z
+ * Strategy: hybrid
+ */
+
+// Direct bundle configuration (no fetch required)
+export const SLICE_BUNDLE_CONFIG = {
+  "version": "2.0.0",
+  "format": "v2",
+  "loadingPolicy": "enabled",
+  "strategy": "hybrid",
+  "minified": true,
+  "obfuscated": true,
+  "production": true,
+  "generated": "2026-06-12T10:46:24.571Z",
+  "stats": {
+    "totalComponents": 32,
+    "totalRoutes": 7,
+    "sharedComponents": 1,
+    "sharedPercentage": "0.0",
+    "totalSize": 177827,
+    "criticalSize": 41711
+  },
+  "bundles": {
+    "framework": {
+      "file": "slice-bundle.framework.js",
+      "size": 142091,
+      "hash": "3f471a823096a6698885907921676c2cf9efcd3c2cbb8aa984924d7b9f40936b",
+      "integrity": "sha256:3f471a823096a6698885907921676c2cf9efcd3c2cbb8aa984924d7b9f40936b",
+      "components": [
+        "Framework/Structural/ContextManager",
+        "Framework/Structural/Controller",
+        "Framework/Structural/EventManager",
+        "Framework/Structural/Logger",
+        "Framework/Structural/Router",
+        "Framework/Structural/StylesManager",
+        "Framework/Structural/EventManagerDebugger",
+        "Framework/Structural/ContextManagerDebugger",
+        "Framework/Structural/ThemeManager"
+      ]
+    },
+    "vendorShared": null,
+    "critical": {
+      "file": "slice-bundle.critical.js",
+      "size": 41711,
+      "hash": "2467e67fc8fb429a01349d2171b190e2ab63a732e8798fa7856be5bf3a24d554",
+      "integrity": "sha256:2467e67fc8fb429a01349d2171b190e2ab63a732e8798fa7856be5bf3a24d554",
+      "components": [
+        "Loading"
+      ]
+    },
+    "routes": {
+      "general": {
+        "path": [
+          "/libro/:ol_id",
+          "/perfil/:username",
+          "/mi-estante",
+          "/login",
+          "/registro"
+        ],
+        "file": "slice-bundle.general.js",
+        "size": 52172,
+        "hash": "240ffff438319ab251632f60219e6687c539065a16027e9d8e8aa6a9e5f8d07f",
+        "integrity": "sha256:240ffff438319ab251632f60219e6687c539065a16027e9d8e8aa6a9e5f8d07f",
+        "components": [
+          "ApiService",
+          "Input",
+          "LibroPage",
+          "LoginPage",
+          "MiEstantePage",
+          "Modal",
+          "PerfilPage",
+          "RegistroPage",
+          "ResenaModal"
+        ],
+        "dependencies": [
+          "critical",
+          "shared-core"
+        ]
+      },
+      "home": {
+        "path": [
+          "/"
+        ],
+        "file": "slice-bundle.home.js",
+        "size": 40542,
+        "hash": "5353a472e269d863258a674c44c16c6974d02acd913d9da54c271f61192171dc",
+        "integrity": "sha256:5353a472e269d863258a674c44c16c6974d02acd913d9da54c271f61192171dc",
+        "components": [
+          "ApiService",
+          "Card",
+          "HomePage",
+          "Input"
+        ],
+        "dependencies": [
+          "critical",
+          "shared-core"
+        ]
+      },
+      "misc": {
+        "path": [
+          "/404"
+        ],
+        "file": "slice-bundle.misc.js",
+        "size": 2162,
+        "hash": "6e4e11b8cde0a8098bf518845a89d829bf78e1118b7a460c5db3052814e185c7",
+        "integrity": "sha256:6e4e11b8cde0a8098bf518845a89d829bf78e1118b7a460c5db3052814e185c7",
+        "components": [
+          "NotFound"
+        ],
+        "dependencies": [
+          "critical",
+          "shared-core"
+        ]
+      },
+      "shared-core": {
+        "path": [],
+        "file": "slice-bundle.shared-core.js",
+        "size": 7480,
+        "hash": "710a084d1cab06108ffdb2a04d24cee8e5278699ed65446bd264d5100f39b7c5",
+        "integrity": "sha256:710a084d1cab06108ffdb2a04d24cee8e5278699ed65446bd264d5100f39b7c5",
+        "components": [
+          "Button"
+        ],
+        "dependencies": [
+          "critical"
+        ]
+      }
+    }
+  },
+  "routeBundles": {
+    "/libro/:ol_id": [
+      "critical",
+      "shared-core",
+      "general"
+    ],
+    "/perfil/:username": [
+      "critical",
+      "shared-core",
+      "general"
+    ],
+    "/mi-estante": [
+      "critical",
+      "shared-core",
+      "general"
+    ],
+    "/login": [
+      "critical",
+      "shared-core",
+      "general"
+    ],
+    "/registro": [
+      "critical",
+      "shared-core",
+      "general"
+    ],
+    "/": [
+      "critical",
+      "shared-core",
+      "home"
+    ],
+    "/404": [
+      "critical",
+      "shared-core",
+      "misc"
+    ]
+  },
+  "routeDependencyGraph": {
+    "/libro/:ol_id": {
+      "bundles": [
+        "general"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "general"
+        },
+        {
+          "from": "shared-core",
+          "to": "general"
+        }
+      ]
+    },
+    "/perfil/:username": {
+      "bundles": [
+        "general"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "general"
+        },
+        {
+          "from": "shared-core",
+          "to": "general"
+        }
+      ]
+    },
+    "/mi-estante": {
+      "bundles": [
+        "general"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "general"
+        },
+        {
+          "from": "shared-core",
+          "to": "general"
+        }
+      ]
+    },
+    "/login": {
+      "bundles": [
+        "general"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "general"
+        },
+        {
+          "from": "shared-core",
+          "to": "general"
+        }
+      ]
+    },
+    "/registro": {
+      "bundles": [
+        "general"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "general"
+        },
+        {
+          "from": "shared-core",
+          "to": "general"
+        }
+      ]
+    },
+    "/": {
+      "bundles": [
+        "home"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "home"
+        },
+        {
+          "from": "shared-core",
+          "to": "home"
+        }
+      ]
+    },
+    "/404": {
+      "bundles": [
+        "misc"
+      ],
+      "edges": [
+        {
+          "from": "critical",
+          "to": "misc"
+        },
+        {
+          "from": "shared-core",
+          "to": "misc"
+        }
+      ]
+    }
+  }
+};
+
+// Auto-initialization if slice is available
+if (typeof window !== 'undefined' && window.slice && window.slice.controller) {
+  window.slice.controller.bundleConfig = SLICE_BUNDLE_CONFIG;
+
+  // Load critical bundle automatically
+  if (SLICE_BUNDLE_CONFIG.bundles.critical && !window.slice.controller.criticalBundleLoaded) {
+    (async () => {
+      const bundlePath = "/bundles/" + SLICE_BUNDLE_CONFIG.bundles.critical.file;
+      const integrity = SLICE_BUNDLE_CONFIG.bundles.critical.integrity;
+
+      if (typeof window.slice.controller.verifyBundleIntegrity === 'function') {
+        const ok = await window.slice.controller.verifyBundleIntegrity(bundlePath, integrity);
+        if (!ok) {
+          console.warn('Failed to load critical bundle: integrity check failed');
+          return;
+        }
+      }
+
+      import('./slice-bundle.critical.js').catch(err =>
+        console.warn('Failed to load critical bundle:', err)
+      );
+      window.slice.controller.criticalBundleLoaded = true;
+    })();
+  }
+}

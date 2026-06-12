@@ -1,0 +1,1 @@
+export default class HomeSection extends HTMLElement{constructor(props){super(),slice.attachTemplate(this),this.t=this.querySelector(".home__cta"),slice.controller.setComponentProps(this,props)}async init(){const t=await slice.build("Button",{value:"Go to About",o:()=>slice.router.navigate("/about")});this.t.appendChild(t)}}customElements.define("slice-home-section",HomeSection);
