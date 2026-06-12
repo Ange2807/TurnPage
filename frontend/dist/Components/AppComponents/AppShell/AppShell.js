@@ -1,1 +1,29 @@
-export default class AppShell extends HTMLElement{constructor(props){super(),slice.attachTemplate(this),this.t=this.querySelector(".app-shell__header"),this.i=this.querySelector(".app-shell__content"),slice.controller.setComponentProps(this,props)}async init(){const t=await slice.build("Navbar",{o:"app-navbar",position:"fixed",items:[{text:"Home",path:"/"},{text:"About",path:"/about"}]});this.t.appendChild(t);const e=await slice.build("MultiRoute",{o:"app-content",routes:[{path:"/",component:"HomeSection"},{path:"/about",component:"AboutSection"}]});this.i.appendChild(e)}}customElements.define("slice-app-shell",AppShell);
+export default class AppShell extends HTMLElement {
+  constructor(props) {
+    (super(),
+      slice.attachTemplate(this),
+      (this.t = this.querySelector(".app-shell__header")),
+      (this.i = this.querySelector(".app-shell__content")),
+      slice.controller.setComponentProps(this, props));
+  }
+  async init() {
+    const t = await slice.build("Navbar", {
+      o: "app-navbar",
+      position: "fixed",
+      items: [
+        { text: "Home", path: "/" },
+        { text: "About", path: "/about" },
+      ],
+    });
+    this.t.appendChild(t);
+    const e = await slice.build("MultiRoute", {
+      o: "app-content",
+      routes: [
+        { path: "/", component: "HomeSection" },
+        { path: "/about", component: "AboutSection" },
+      ],
+    });
+    this.i.appendChild(e);
+  }
+}
+customElements.define("slice-app-shell", AppShell);

@@ -1,1 +1,75 @@
-export default class HomePage extends HTMLElement{static props={};constructor(props){super(),slice.attachTemplate(this),slice.controller.setComponentProps(this,props)}async init(){this.api=await slice.build("ApiService",{t:"api-service"}),await this.i(),await this.o()}async i(){const t=this.querySelector("#home-grid-populares");try{const s=await fetch("http://localhost:3000/api/resenas/populares");if(!s.ok)throw new Error;const a=await s.json();t.innerHTML="";for(const s of a)t.appendChild(await this.l(s))}catch(s){t.innerHTML='<p class="muted">Aún no hay libros reseñados. ¡Sé el primero!</p>'}}async o(){this.u=await slice.build("Input",{placeholder:"Buscar un libro...",type:"text"}),this.querySelector("#home-input-buscar").appendChild(this.u);const t=this.querySelector("#home-resultados"),s=this.querySelector("#home-grid-resultados"),buscar=async()=>{const a=this.u.value.trim();if(a){s.innerHTML='<p class="muted">Buscando...</p>',t.style.display="block";try{const t=await this.api.buscarLibros(a);if(s.innerHTML="",!t.length)return s.innerHTML='<p class="muted">Sin resultados.</p>',void 0;for(const a of t)s.appendChild(await this.l(a))}catch(t){s.innerHTML=`<p class="muted">Error: ${t.message}</p>`}}};this.u.$input.addEventListener("keydown",t=>{"Enter"===t.key&&buscar()});const a=await slice.build("Button",{value:"🔍 Buscar",h:buscar});this.querySelector("#home-btn-buscar").appendChild(a)}async l(t){const s=await slice.build("Card",{title:t.titulo||t.titulo_libro,text:t.autor||t.autor_libro||"",image:t.portada||t.portada_libro||null,variant:"outlined",badge:t.promedio_calificacion?`★ ${t.promedio_calificacion}`:null,interactive:!0,actions:[{text:"Ver libro",h:async()=>slice.router.navigate(`/libro/${t.ol_id}`)}]});return s}}
+export default class HomePage extends HTMLElement {
+  static props = {};
+  constructor(props) {
+    (super(),
+      slice.attachTemplate(this),
+      slice.controller.setComponentProps(this, props));
+  }
+  async init() {
+    ((this.api = await slice.build("ApiService", { t: "api-service" })),
+      await this.i(),
+      await this.o());
+  }
+  async i() {
+    const t = this.querySelector("#home-grid-populares");
+    try {
+      const s = await fetch("http://localhost:3000/api/resenas/populares");
+      if (!s.ok) throw new Error();
+      const a = await s.json();
+      t.innerHTML = "";
+      for (const s of a) t.appendChild(await this.l(s));
+    } catch (s) {
+      t.innerHTML =
+        '<p class="muted">Aún no hay libros reseñados. ¡Sé el primero!</p>';
+    }
+  }
+  async o() {
+    ((this.u = await slice.build("Input", {
+      placeholder: "Buscar un libro...",
+      type: "text",
+    })),
+      this.querySelector("#home-input-buscar").appendChild(this.u));
+    const t = this.querySelector("#home-resultados"),
+      s = this.querySelector("#home-grid-resultados"),
+      buscar = async () => {
+        const a = this.u.value.trim();
+        if (a) {
+          ((s.innerHTML = '<p class="muted">Buscando...</p>'),
+            (t.style.display = "block"));
+          try {
+            const t = await this.api.buscarLibros(a);
+            if (((s.innerHTML = ""), !t.length))
+              return (
+                (s.innerHTML = '<p class="muted">Sin resultados.</p>'),
+                void 0
+              );
+            for (const a of t) s.appendChild(await this.l(a));
+          } catch (t) {
+            s.innerHTML = `<p class="muted">Error: ${t.message}</p>`;
+          }
+        }
+      };
+    this.u.$input.addEventListener("keydown", (t) => {
+      "Enter" === t.key && buscar();
+    });
+    const a = await slice.build("Button", { value: "🔍 Buscar", h: buscar });
+    this.querySelector("#home-btn-buscar").appendChild(a);
+  }
+  async l(t) {
+    const s = await slice.build("Card", {
+      title: t.titulo || t.titulo_libro,
+      text: t.autor || t.autor_libro || "",
+      image: t.portada || t.portada_libro || null,
+      variant: "outlined",
+      badge: t.promedio_calificacion ? `★ ${t.promedio_calificacion}` : null,
+      interactive: !0,
+      actions: [
+        {
+          text: "Ver libro",
+          h: async () => slice.router.navigate(`/libro/${t.ol_id}`),
+        },
+      ],
+    });
+    return s;
+  }
+}
